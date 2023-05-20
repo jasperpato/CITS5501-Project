@@ -1,0 +1,6 @@
+Assumptions:
+- minimal whitespace in Q1
+
+Questions:
+- How many productions in <a> ::= "a" <a> ? eg. possible re-writings include <a> ::= "a" "a" <a> ...
+- Will we have to deal with [A-D] in countTerminals and countProductions?

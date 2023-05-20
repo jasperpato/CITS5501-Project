@@ -1,0 +1,18 @@
+<space> ::= " "
+
+<airport> ::= [A-D] [A-D] [A-D]
+<airline> ::= [I-L] [I-L]
+<flight> ::= <airline> [0-9] [0-9]? [0-9]? [0-9]?
+
+<trip_type> ::= "OneWay" | ("Return" <space> (("1"? [0-9]) | "20"))
+
+<cabin_type> ::= "P" | "F" | "J" | "C" | "S" | "Y"
+<departure_date> ::= [0-9] [0-9] [0-9] [0-9] "-" [0-9] [0-9] "-" [0-9] [0-9]
+
+<shop_command> ::= "shop flight fares" <space> <airport> <space> <airport> <space> <trip_type> <space> <cabin_type> <space> <departure_date>
+
+<line> ::= "seg" <space> <airport> <space> <airport> <space> <flight> <space> <departure_date> <space> <cabin_type> <space> ([1-9] | "10") "\n"
+<list> ::= <line> | (<list> <line>)
+<air_command> ::= "air book req" "\n" <list> "EOC"
+
+<gladius_command> ::= <shop_command> | <air_command>
